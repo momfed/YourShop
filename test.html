@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en-US">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="icon" type="icon" href="public/images/favicon.ico">
+    <title>test</title>
+    <style type="text/css">
+@media only screen and (max-width: 768px) {  
+#brand-img {
+  height: 45px;
+  margin:-8px;
+}
+#respond-s {width: 100%;}
+}
+@media only screen and (min-width: 768px) {  
+#brand-img {
+  height: 40px;
+  margin:-9px;
+}
+#respond-s {width: 300px;}
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#NavBar">
+          <i style="color: #fff; text-weight: " class="fa fa-bars"></i>
+        </button>
+          <a href="/" class="navbar-brand container-fluid"><img src="public/images/icon.png" alt="icon" id="brand-img"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="NavBar">
+         <ul class="nav navbar-nav">
+            <li class='active'><a href="/" class="active">Kreu</a></li>
+            <li><a href="#">bla</a></li>
+            <li><a href="#">bla bla</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <form action="" class="navbar-form" role="search">
+                    <div class="input-group" align="center">
+                      <input type="search" class="form-control" id="respond-s" required autocomplete="on" placeholder="Kerko p&euml;r...">
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </li>
+            <li data-toggle='modal' data-target='#sign-in'><a href="javascript:void(0)">Sign in</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="modal fade" id="sign-in">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss='modal'>&times;</button>
+            <h3 class="modal-title">Sign in</h3>
+          </div>
+          <div class="modal-body">
+            <form action="" role='form'>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Sign in</button>
+            <h6 class="text-center">Nuk keni nje llogari? Rregjistrohuni <a href="/SignUp">ketu</a></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

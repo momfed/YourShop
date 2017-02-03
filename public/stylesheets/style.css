@@ -1,0 +1,15 @@
+@media only screen and (max-width: 768px) {  
+#brand-img {
+  height: 45px;
+  margin:-8px;
+}
+#respond-s {width: 100%;}
+}
+@media only screen and (min-width: 768px) {  
+#brand-img {
+  height: 40px;
+  margin:-9px;
+}
+#respond-s {width: 300px;}
+}
+.margin {margin-top: 50px}
