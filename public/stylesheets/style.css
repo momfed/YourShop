@@ -14,8 +14,9 @@
 }
 .margin {margin-top: 70px}
 .thumbnail img {max-height: 200px}
-.thumbnail .dsc {color: #7f7f7f;}
+.thumbnail .dsc {color: #7f7f7f; height:100px;}
 .price {
-	font-size: 16px;
+	font-size: 25px;
 	font-weight: bold;
 }
+
