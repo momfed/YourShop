@@ -3,6 +3,8 @@
 		<h1>Sign Up</h1>
 		{{#if hasErrors}}
 			<div class="alert alert-danger">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  				<span class="sr-only">Error:</span>
 				{{# each messages}}
 					<p>{{this}}</p>
 				{{/each}}
