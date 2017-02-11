@@ -10,8 +10,8 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
 	res.render('user/profile');
 });
 
-router.get('/logout', isLoggedIn, function(req, res, next) {
-	req.logout();
+router.get('/logout', function(req, res, next) {
+	req.logout()
 	res.redirect('/');
 });
 
