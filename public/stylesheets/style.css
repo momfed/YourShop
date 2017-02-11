@@ -4,6 +4,7 @@
   margin:-8px;
 }
 #respond-s {width: 100%;}
+.margit {margin-bottom: 10px}
 }
 @media only screen and (min-width: 768px) {  
 #brand-img {
@@ -19,4 +20,10 @@
 	font-size: 25px;
 	font-weight: bold;
 }
-
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+  height: 3px;
+  border-top: 0;
+  background: #333;
+  border-radius: 5px;
+}
