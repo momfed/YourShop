@@ -20,11 +20,13 @@ passport.use('local.signup', new LocalStrategy({
 	var firstName = req.body.firstName;
 	var lastName = req.body.lastName;
 	var adress = req.body.adress;
-	req.checkBody('firstName', 'Invalid name!').notEmpty();
-	req.checkBody('lastName', 'Invalid lastName!').notEmpty();
-	req.checkBody('email', 'Invalid e-mail!').notEmpty().isEmail();
-	req.checkBody('password', 'Invalid password!').notEmpty().isLength({min:6});
-	req.checkBody('adress', 'Invalid adress!').notEmpty();
+	var zone = req.body.zone;
+	var tel = req.body.tel;
+	req.checkBody('firstName', 'Ju lutem vendosni emrin!').notEmpty();
+	req.checkBody('lastName', 'Ju lutem vendosni mbiemrin!').notEmpty();
+	req.checkBody('email', 'Email-i nuk eshte i sakte!').notEmpty().isEmail();
+	req.checkBody('password', 'Password-i duhet te permbaje me shume se 6 karaktere!').notEmpty().isLength({min:6});
+	req.checkBody('adress', 'Ju lutem vendosni adresen tuaj!').notEmpty();
 	var errors = req.validationErrors();
 	if (errors) {
 		var messages = [];
@@ -38,7 +40,7 @@ passport.use('local.signup', new LocalStrategy({
 			return done(err);
 		}
 		if (user) {
-			return done(null, false, {message: 'Email already in use!'});
+			return done(null, false, {message: 'Email-i eshte ne perdorim!'});
 		}
 		var newUser = new User();
 		  newUser.firstName = firstName;
@@ -46,6 +48,8 @@ passport.use('local.signup', new LocalStrategy({
 		  newUser.email = email;
 		  newUser.password = newUser.encryptPassword(password);
 		  newUser.adress = adress;
+		  newUser.zone = zone;
+		  newUser.tel = tel;
 		  newUser.save(function(err, result) {
 		  	if (err) {
 		  		return done(err);
@@ -59,8 +63,8 @@ passport.use('local.signin', new LocalStrategy({
 	password: 'password',
 	passReqToCallback: true
 }, function(req, email, password, done) {
-	req.checkBody('email', 'Invalid e-mail!').notEmpty().isEmail();
-	req.checkBody('password', 'Invalid password!').notEmpty();
+	req.checkBody('email', 'Email-i nuk eshte i sakte!').notEmpty().isEmail();
+	req.checkBody('password', 'Password-i nuk eshte i sakte!').notEmpty();
 	var errors = req.validationErrors();
 	if (errors) {
 		var messages = [];
@@ -74,10 +78,10 @@ passport.use('local.signin', new LocalStrategy({
 			return done(err);
 		}
 		if (!user) {
-			return done(null, false, {message: 'No user found'});
+			return done(null, false, {message: 'Nuk u gjet asnje perdorues me keto te dhena.'});
 		}
 		if (!user.validPassword(password)) {
-			return done(null, false, {message: 'Pass i gabuar'});
+			return done(null, false, {message: 'Password i gabuar!'});
 		}
 		return done(null, user);
 	});

@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-		<h1>Sign In</h1>
+		<h1>Lidhu</h1>
 		{{#if hasErrors}}
 			<div class="alert alert-danger">
 				{{# each messages}}
@@ -18,11 +18,11 @@
 				<input type="password" id="password" name="password" class="form-control" required>
 			</div>
 			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
-			<button type="submit" class="btn btn-primary pull-right">Sign In</button>
+			<button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i>  Lidhu</button>
 		</form>
 		<div class="clearfix"></div>
 		<div class="footer"><hr style="height:3px">
-        	<h6 class="text-center">Nuk keni nje llogari? Rregjistrohuni <a href="/user/signup">k&euml;tu</a></h6>
+        	<h6 class="text-center">Nuk keni nje llogari? Regjistrohuni <a href="/user/signup">k&euml;tu</a></h6>
         </div>	
 	</div>
 </div>

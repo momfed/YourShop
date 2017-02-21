@@ -12,46 +12,86 @@
 			</div>
 		{{/if}}
 		<form action="/user/signup" id="form" method="post" role="form">
-			<h2>Regjistrohuni <small>Ju lutemi, plot&euml;soni formularin.</small></h2>
+			<h2>Regjistrohuni <small>Ju lutemi, plot&euml;soni formularin e m&euml;posht&euml;m me t&euml; dh&euml;nat e sakta.</small></h2>
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="Emri" tabindex="1" autocomplete="off" required>
+					<div id="firstNameDiv" class="form-group">
+                        <input type="text" name="firstName" id="firstName" data-input="firstNameDiv" data-name="firstName" class="form-control input-lg in" placeholder="Emri" tabindex="1" required>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Mbiemri" tabindex="2" autocomplete="off" required>
+					<div id="lastNameDiv" class="form-group">
+						<input type="text" name="lastName" id="lastName" data-input="lastNameDiv" data-name="lastName" class="form-control input-lg in" placeholder="Mbiemri" tabindex="2" required>
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email" tabindex="4" autocomplete="off" required>
+			<div id="emailDiv" class="form-group">
+				<input type="email" name="email" id="email" data-input="emailDiv" data-name="email" class="form-control input-lg in" placeholder="Email" tabindex="3" required>
 			</div>
-			<div class="form-group">
-				<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" autocomplete="off" required>
+			<div id="passDiv" class="form-group">
+				<input type="password" name="password" id="password" data-input="passDiv" data-name="password" class="form-control input-lg in" placeholder="Password" tabindex="4" required>
 			</div>
-			<div class="form-group">
-				<textarea name="adress" id="adress" class="form-control" placeholder="Adresa" rows="3"  autocomplete="off" required></textarea>
+    		<div class="form-group">
+    			<div id="telDiv" class="input-group">
+    				<div class="input-group-addon">+355</div>
+					<input type="text" name="tel" id="tel" data-input="telDiv" data-name="tel" class="form-control input-lg in" placeholder="Nr. i telefonit (06********)" maxlength="10" tabindex="5" required>
+				</div>
 			</div>
+			<div id="telErr" class="alert alert-danger hidden" role="alert">Numri i telefonit duhet t&euml; p&euml;rmbaje 10 karaktere duke p&euml;rfshire "0" !</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div id="cityDiv" class="form-group">
+						<select id="city" name="city" data-select="city" data-input="cityDiv" class="form-control input-lg selecting" tabindex="6">
+  							<option value="-1">Qyteti</option>
+  							<option value="1" id="thisCity">Tiran&euml;</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div id="zoneDiv" class="form-group">
+						<select id="zone" name="zone" data-select="zone" data-input="zoneDiv" class="form-control input-lg selecting" tabindex="7">
+  							<option value="0">Zona</option>
+  							<option value="1">Ali Demi</option>
+							<option value="2">Qyteti Studenti, Sauku</option>
+							<option value="3">Xhamlliku</option>
+							<option value="4">Babrruja, Alliasi, Kinostudio</option>
+							<option value="5">Selita, Tirana e Re</option>
+							<option value="6">Kombinati, Yzberishti</option>
+							<option value="7">Ish-Fusha e Aviacionit, 21 dhjetori</option>
+							<option value="8">Selvia, Medreseja</option>
+							<option value="9">Brraka</option>
+							<option value="10">Qendra</option>
+							<option value="11">Lapraka, Instituti, Bathorja</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div id="adressDiv" class="form-group">
+				<textarea name="adress" id="adress" class="form-control input-lg in" data-input="adressDiv" data-name="adress" placeholder="Adresa" rows="3"  tabindex="8" required></textarea>
+			</div>
+			<div id="acceptErr" class="alert alert-danger hidden" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Ju nuk keni pranuar kushtet dhe termat!</div>
+			<div id="cityErr" class="alert alert-danger hidden" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Ju nuk keni zgjedhur qytetin tuaj!</div>
+			<div id="zoneErr" class="alert alert-danger hidden" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Ju nuk keni zgjedhur zonen tuaj!</div>
+			<div id="Err" class="alert alert-danger hidden" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Error! Rishikoni formularin p&euml;r gabime.</div>
 			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
 			<div class="row">
+			
 				<div class="col-xs-4 col-sm-3 col-md-3">
 					<span class="button-checkbox">
-						<button type="button" class="btn" style="outline: none;" data-color="info" tabindex="7">Pranoj</button>
+						<button type="button" class="btn" id="accept" style="outline: none;" data-color="info" tabindex="9">Pranoj</button>
                         <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
 					</span>
 				</div>
 				<div class="col-xs-8 col-sm-9 col-md-9">
-					 Duke klikuar <strong class="label label-primary">Regjistrohu</strong>, ti pranon <a href="#" data-toggle="modal" data-target="#t_and_c_m">Termat dhe Kushtet</a> e vendosura nga kjo faqe, duke perfshire edhe Cookies.
+					 Duke klikuar <strong class="label label-success">Regjistrohu</strong>, ti pranon <a href="#" data-toggle="modal" data-target="#t_and_c_m">Termat dhe Kushtet</a> e vendosura nga kjo faqe, duke perfshire edhe Cookies.
 				</div>
 			</div>
 			
 			<hr class="colorgraph">
-			<div class="row">
-				<div class="col-xs-12 col-md-6 margit"><input type="submit" value="Regjistrohu" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="/user/signin" class="btn btn-success btn-block btn-lg">Lidhu</a></div>
+			<div class="row margin-bottom">
+				<div class="col-xs-12 col-md-6 margit"><input type="submit" value="Regjistrohu" class="btn btn-success btn-block btn-lg" tabindex="10"></div>
+				<div class="col-xs-12 col-md-6"><a href="/user/signin" class="btn btn-primary btn-block btn-lg" tabindex="11">Lidhu</a></div>
 			</div>
 		</form>
 	</div>

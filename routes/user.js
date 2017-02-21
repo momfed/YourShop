@@ -2,12 +2,20 @@ var express = require('express');
 var router = express.Router();
 var csrf =  require('csurf');
 var passport = require('passport');
+var User = require('../models/user');
+var mongoose = require('mongoose');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
+var uri = 'mongodb://localhost/shopping';
+
 router.get('/profile', isLoggedIn, function(req, res, next) {
-	res.render('user/profile');
+	var id = req.user.id;
+	User.find({_id: id}, function(err, user) {
+		if (err) throw err;
+		res.render('user/profile', {title: 'Profili', user: user});
+	});
 });
 
 router.get('/logout', function(req, res, next) {
@@ -21,7 +29,7 @@ router.use('/', notLoggedIn, function(req, res, next) {
 
 router.get('/signup', function(req, res, next){
 	var messages = req.flash('error');
-	res.render('user/signup', {csrfToken: req.csrfToken(), messages:messages, hasErrors: messages.length > 0});
+	res.render('user/signup', {title: 'Rregjistrohuni', csrfToken: req.csrfToken(), messages:messages, hasErrors: messages.length > 0});
 });
 
 router.post('/signup', passport.authenticate('local.signup', {
@@ -32,7 +40,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 
 router.get('/signin', function(req, res, next) {
 	var messages = req.flash('error');
-	res.render('user/signin', {csrfToken: req.csrfToken(), messages:messages, hasErrors: messages.length > 0});
+	res.render('user/signin', {title: 'Hyni ne Logari' ,csrfToken: req.csrfToken(), messages:messages, hasErrors: messages.length > 0});
 });
 
 router.post('/signin', passport.authenticate('local.signin', {
