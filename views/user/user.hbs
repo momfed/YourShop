@@ -1,0 +1,15 @@
+<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+<div class="panel panel-default">
+  <div class="panel-body">
+  {{# each user }}
+    <ul id="user" class="list-group">
+      <li class="list-group-item" style="font-size: 16px">Emri: <span class="text-capitalize pull-right text-info">{{ firstName }}</span></li>
+      <li class="list-group-item" style="font-size: 16px">Mbiemri: <span class="text-capitalize pull-right text-info">{{ lastName }}</span></li>
+      <li class="list-group-item" style="font-size: 16px">Email: <span class="pull-right text-info">{{ email }}</span></li>
+      <li class="list-group-item" style="font-size: 16px">Nr. Tel: <span class="text-capitalize pull-right text-info">{{ tel }}</span></li>
+      <li class="list-group-item" style="font-size: 16px">Zona: <span class="text-capitalize pull-right text-info">{{ zone }}</span></li>
+    </ul>
+  {{/each}}
+  </div>
+</div>
+</div>

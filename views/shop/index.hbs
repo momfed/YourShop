@@ -1,2 +1,83 @@
 <p id="AC" data-title="kreu"></p>
-<h1>Hello this is homepage</h1>
+<div id="first-slider">
+    <div id="carousel-example-generic" class="carousel slide animated bounceInLeft carousel-fade">
+        <!-- Indicators -->
+       
+        <ol class="carousel-indicators"> 
+        {{# each offers }}
+            	<li data-target="#carousel-example-generic" data-slide-to="{{ slice }}"></li>
+        {{/each}}
+ 		</ol>
+              <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <!-- Item 1 -->
+            {{# each offers }}
+			<div class="item slide1 blur-bgimage" style="background-image: url({{ imagePATH }});background-repeat: no-repeat;background-position: center;background-size: cover;">
+                <div class="row"><div class="container" >
+                    <div class="col-md-3 text-right">
+                        <img style="max-width: 200px;" class="content"  data-animation="animated zoomInLeft" src="{{ imagePATH }}">
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h3 data-animation="animated bounceInDown text-capitalize">{{ title }}</h3>
+                        <h4 data-animation="animated bounceInUp">{{ price }} Lek&euml;</h4>             
+                     </div>
+                </div></div>
+             </div>
+             {{/each}}
+        </div>
+        <!-- End Wrapper for slides-->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <i style="display: none;" class="fa commandIco fa-angle-left"></i><span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <i style="display: none;" class="fa commandIco fa-angle-right"></i><span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<br>
+
+
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
+ 
+
+<!--Item slider text-->
+<div class="container animated bounceInDown">
+  <div class="row" id="slider-text">
+    <div class="col-md-6" >
+      <h2>Oferta Javore</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Item slider-->
+<div class="container-fluid">
+
+  <div id="mine" class="row animated bounceInRight">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+        <div id="in2" class="carousel-inner">
+        
+		{{# each offers }}{{#if offer}}
+		  <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="{{ imagePATH }}" class="img-responsive center-block"></a>
+              <span class="badge1">{{ badge }}%</span>
+              <h4 class="text-center">{{ title }}</h4>
+              <h5 class="text-center">{{ price }} Lek&uml;</h5>
+              <h6 class="text-center">{{ price }} Lek&uml;</h6>
+            </div>
+          </div>{{/if}}
+        {{/each}}
+
+        </div>
+
+        <div id="slider-control">
+        <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive"></a>
+        <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive"></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Item slider end-->
+<br>

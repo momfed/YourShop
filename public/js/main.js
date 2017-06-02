@@ -11,7 +11,7 @@ $(function () {
             $('#'+div).addClass('has-error');
         }
     });
-    $('.in').on('change', function () {
+    $('.in').on('click', function () {
         var div = $(this).attr('data-input');
         if($('#'+div).hasClass('has-error')) {
             $('#'+div).removeClass('has-error');
@@ -144,4 +144,75 @@ $(function () {
             $('#zoneDiv').removeClass('has-error');
         }
     });
+    $('#address').on('change', function() {
+        $('#address option#newAddress').each(function() {
+            if($(this).is(':selected')) {
+                $('#newAddressDiv').removeClass('hidden');
+            }
+        });
+    });
+    
+
+    $('.carousel-indicators').children().eq(0).addClass('active');
+    $('.carousel-inner').children().eq(0).addClass('active');
+    $('#in2').children().eq(0).addClass('active');
+
+    //Function to animate slider captions 
+    function doAnimations( elems ) {
+        //Cache the animationend event in a variable
+        var animEndEv = 'webkitAnimationEnd animationend';
+        
+        elems.each(function () {
+            var $this = $(this),
+                $animationType = $this.data('animation');
+            $this.addClass($animationType).one(animEndEv, function () {
+                $this.removeClass($animationType);
+            });
+        });
+    }
+    
+    //Variables on page load 
+    var $myCarousel = $('#carousel-example-generic'),
+        $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+        
+    //Initialize carousel 
+    $myCarousel.carousel();
+    
+    //Animate captions in first slide on page load 
+    doAnimations($firstAnimatingElems);
+    
+    //Pause carousel  
+    $myCarousel.carousel('pause');
+    
+    
+    //Other slides to be animated on carousel slide event 
+    $myCarousel.on('slide.bs.carousel', function (e) {
+        var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
+        doAnimations($animatingElems);
+    });  
+    $('#carousel-example-generic').carousel({
+        interval:2000,
+        pause: "false"
+    });
+
+    $myCarousel.mouseover(function() {$('.commandIco').fadeIn(500)}).mouseleave(function() {$('.commandIco').fadeOut(500)});
+
+    $('#itemslider').carousel({ interval: 3000 });
+}());
+$('.carousel-showmanymoveone .item').each(function(){
+    var itemToClone = $(this);
+
+    for (var i=1;i<6;i++) {
+      itemToClone = itemToClone.next();
+
+
+      if (!itemToClone.length) {
+        itemToClone = $(this).siblings(':first');
+      }
+
+
+      itemToClone.children(':first-child').clone()
+        .addClass("cloneditem-"+(i))
+        .appendTo($(this));
+    }
 });

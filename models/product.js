@@ -5,6 +5,7 @@ var schema = new Schema({
 	imagePATH: {type: String, required: true},
 	title: {type: String, required: true},
 	description: {type: String, required: true},
+	kind: {type: Array, required: true},
 	price: {type: Number, required: true},
 });
 

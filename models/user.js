@@ -7,9 +7,9 @@ var userSchema = new Schema({
 	lastName: {type : String, required: true},
 	email: {type : String, required: true},
 	password: {type: String, required: true},
-	tel: {type: Number, required: true},
+	tel: {type: String, required: true},
 	zone: {type: String, required: true},
-	adress: {type : String, required: true}
+	adress: {type : Array, required: true}
 });
 
 userSchema.methods.encryptPassword = function(password) {

@@ -1,0 +1,54 @@
+<div class="row">
+	{{# each product }}
+		<div id="undershadow" data-toggle='modal' data-target='#imgZoom' class="col-xs-12 animated rotateInDownLeft col-md-6 blur">
+			<a href="javascript:void(0)" id="thumb" class="thumbnail">
+				<img src="{{imagePATH}}" alt="{{ title }}" class="img-responsive">
+				<div id="zoomIco" style="display: none;"><i class="fa fa-search-plus ico fa-4x"></i></div>
+			</a>
+		</div>
+		
+		<div class="col-xs-12 col-md-6">
+			<div id="titleDiv" class="notice animated rotateInDownRight notice-lg notice-info">
+				<strong><h1 class="text-capitalize">{{ title }}</h1></strong>
+			</div>
+			<div id="dscDiv" class="notice animated bounceInRight notice-lg">
+				<p>{{ description }}</p>
+			</div>
+			<div id="quantDiv" class="notice animated bounceInRight notice-lg">
+				<form action="/add-to-cart-page?prod={{ _id }}" method="post">
+					<div class="form-group">
+						<label for="quantidy" class="text-capitalize">sasia</label><br>
+						<input type="number" class="form-control animated flipInX input-lg" value="1" min="1" name="quantidy" id="quantidy">
+						{{#if kind}}
+						<br>
+						<label for="kind" class="text-capitalize">Lloji</label><br>
+						<select type="number" class="form-control animated flipInX input-lg" name="kind" id="kind">
+							{{#kind}}
+							<option value="{{ name }}">{{ name }}</option>
+							{{/kind}}
+						</select>
+						{{/if}}
+					</div><br>
+					<div id="priceDiv" class="notice animated bounceInRight notice-success price" style="padding: 35px"><span id="price"><strong>{{ price }}</strong></span> L/Cop&euml; <span  class="pull-right"><strong id="price2go"></strong></span></div>
+
+					<div id="buttonDiv" class="notice animated flipInY notice-success notice-lg">
+						<button type="submit" id="btnn" class="btn animated flipInX btn-success btn-lg"><span class="text-capitalize"><i class="glyphicon glyphicon-plus"></i> Shto n&euml; shport&euml;</span></button>
+					</div>
+				</form>
+			</div>
+			
+		</div>
+		<div class="modal fade" id="imgZoom">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss='modal'>&times;</button>
+					</div>
+					<div class="modal-body">
+						<img src="{{ imagePATH }}" alt="{{ title }}" class="img-responsive imageZ">
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+</div>

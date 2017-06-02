@@ -2,7 +2,7 @@ $(function () {
 
 	var p = $('#pagination').attr('data-page');
 	var page = parseInt(p);
-	var link = '/market/page/'
+	var link = $('#pagination').attr('data-link');
 	if (page == 0 || null) {
 		$('#fili').addClass('disabled');
 		$('#pr').addClass('disabled');
@@ -25,16 +25,32 @@ $(function () {
 	var title = $('#AC').attr('data-title');
 	$('#'+title).addClass('active');
 
-	$('search').on('submit', function(){
-
-		$.ajax({
-			type: 'POST',
-			url: '/search/market?',
-			data: 'cracker',
-			success: function(data){
-				location.reload;
-			}
-		});
+	$('.thumbnail').hover(function() {
+		$('#zoomIco').fadeIn(500);
+	}).mouseleave(function() {
+		$('#zoomIco').fadeOut(500);
 	});
 
+	$('#quantidy').on('change', function() {
+		var quantidy = parseInt($('#quantidy').val());
+		var price = parseInt($('#price').text());
+		var price2 = quantidy*price;
+		$('#price2go').html('⇒ '+price2+' L');
+	});
+
+	var offset = 220;
+	var duration = 500;
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > offset) {
+			$('.back-to-top').fadeIn(duration);
+		} else {
+			$('.back-to-top').fadeOut(duration);
+		}
+	});
+				
+	$('.back-to-top').click(function(event) {
+		event.preventDefault();
+		$('html, body').animate({scrollTop: 0}, duration);
+		return false;
+	})
 });

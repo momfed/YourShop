@@ -1,0 +1,53 @@
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#NavBar">
+          <i style="color: #fff; text-weight: " class="fa fa-bars"></i>
+        </button>
+          <a href="/" class="navbar-brand container-fluid"><img src="/images/icon.png" alt="icon" id="brand-img"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="NavBar">
+         <ul class="nav navbar-nav">
+            <li id="kreu"><a href="/" class="active">Kreu</a></li>
+            <li id="marketi"><a href="/market">Marketi</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="s-id" class="dropdown"><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <div class="col-xs-12 col-sm-12">
+                    <form action="/market/search" id="search" method="post" class="navbar-form" role="search">
+                      <div class="input-group" align="center">
+                        <input type="search" class="form-control" id="respond-s" name="searchInput" required autocomplete="on" placeholder="Kerko p&euml;r...">
+                        <div class="input-group-btn">
+                          <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="/cart">
+                <i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge">{{ session.cart.totalQty }}</span>
+                </a>
+            </li>
+            {{# if login }}
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Llogaria </i><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/user/profile"><i class="glyphicon glyphicon-user"></i> Profili</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="/user/logout"><i class="glyphicon glyphicon-log-out"></i> Dil</a></li>
+                </ul>
+              </li>
+            {{else}}
+            <span id="margitleft">
+              <a href="/user/signin"><button type="button" class="btn btn-primary navbar-btn" style="outline: none;">Lidhu</button></a>
+              <a href="/user/signup"><button type="button" class="btn btn-success navbar-btn" style="margin-right: 5px;outline: none;">Regjistrohu</button></a>
+            </span>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </nav>

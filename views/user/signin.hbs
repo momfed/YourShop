@@ -11,18 +11,18 @@
 		<form action="/user/signin" method="post">
 			<div class="form-group">
 				<label for="email">E-Mail</label>
-				<input type="text" id="email" name="email" class="form-control" required>
+				<input type="text" id="email" name="email" class="form-control" tabindex="1" required>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input type="password" id="password" name="password" class="form-control" required>
+				<input type="password" id="password" name="password" class="form-control" tabindex="2" required>
 			</div>
 			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
-			<button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i>  Lidhu</button>
+			<button type="submit" class="btn btn-primary pull-right" tabindex="3"><i class="glyphicon glyphicon-log-in"></i>  Lidhu</button>
 		</form>
 		<div class="clearfix"></div>
 		<div class="footer"><hr style="height:3px">
-        	<h6 class="text-center">Nuk keni nje llogari? Regjistrohuni <a href="/user/signup">k&euml;tu</a></h6>
+        	<h6 class="text-center">Nuk keni nje llogari? Regjistrohuni <a href="/user/signup" tabindex="4">k&euml;tu</a>.</h6>
         </div>	
 	</div>
 </div>

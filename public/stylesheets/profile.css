@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Offside);
+
+@media only screen and (max-width: 768px) {  
+#logo {color:#FFF; font-family:'Offside'; font-size:40px; margin-bottom:50px; margin-top:50px;}
+#content img {padding-bottom: 15px}
+}
+@media only screen and (min-width: 768px) {  
+#logo {color:#FFF; font-family:'Offside'; font-size:80px; margin-bottom:50px; margin-top:50px;}
+}
+
+/* BASE
+============================================================================= */
+
+
+html                            { overflow-y:scroll;}
+body                            { margin-top:40px;  background-color: #fff; background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");}
+/* HEADER
+============================================================================= */
+#header                         { margin-bottom:50px; }
+
+    /* logo */
+    #logo span                  { display:inline-block; }
+
+/* MAIN NAV
+============================================================================= */
+#main-nav                       { margin-bottom:30px; }
+
+/* SIDEBAR
+============================================================================= */
+#sidebar                        {  }
+
+#sidebar-nav                    {  }
+#sidebar-nav ul                 { list-style:none; padding-left:0; }
+#sidebar-nav li                 {  }
+#sidebar-nav a                  { background:#428bca; color:#fff; display:block; margin-bottom:10px; padding:20px; text-transform:uppercase;
+    border-radius:2px; -moz-border-radius:2px; -webkit-border-radius:2px;
+}
+    #sidebar-nav a:hover        { background:#3276b1; text-decoration:none; }
+
+/* CONTENT
+============================================================================= */
+#content                        { background:;background-color:#67BCDB; background-image: url("https://www.transparenttextures.com/patterns/food.png"); min-height:400px; padding:20px; border-radius:2px; -moz-border-radius:2px; -webkit-border-radius:2px;
+}
+#content img                    { border-radius:2px; -moz-border-radius:2px; -webkit-border-radius:2px; }
+
+/* ANIMATIONS
+============================================================================= */
+
+    /* logo */
+    .dd                         { animation-delay:0.2s; -moz-animation-delay:0.2s; -webkit-animation-delay:0.2s; }
+    .da                         { animation-delay:0.8s; -moz-animation-delay:0.8s; -webkit-animation-delay:0.8s; }
+    .dn                         { animation-delay:0.6s; -moz-animation-delay:0.6s; -webkit-animation-delay:0.6s; }
+    .dg                         { animation-delay:1s; -moz-animation-delay:1s; -webkit-animation-delay:1s; }
+    .de                         { animation-delay:0.4s; -moz-animation-delay:0.4s; -webkit-animation-delay:0.4s; }
+    .dr                         { animation-delay:1.2s; -moz-animation-delay:1.2s; -webkit-animation-delay:1.2s; }
+    .di                         { animation-delay:1.4s; -moz-animation-delay:1.4s; -webkit-animation-delay:1.4s; }
+
+    .zz                         { animation-delay:1.8s; -moz-animation-delay:1.8s; -webkit-animation-delay:1.8s; }
+
+    /* sidebar */
+    #side-history                  { animation-delay:0.2s; -moz-animation-delay:0.2s; -webkit-animation-delay:0.2s; }
+    #side-adress                 { animation-delay:0.6s; -moz-animation-delay:0.6s; -webkit-animation-delay:0.6s; }
+    #side-update                  { animation-delay:0.8s; -moz-animation-delay:0.8s; -webkit-animation-delay:0.8s; }
+    #side-order               { animation-delay:0.3s; -moz-animation-delay:0.3s; -webkit-animation-delay:0.3s; }
+
+    /* content */
+    #content                    { animation-delay:1.5s; -moz-animation-delay:1.5s; -webkit-animation-delay:1.5s; }
+    #content img            { animation-delay:1.7s; -moz-animation-delay:1.7s; -webkit-animation-delay:1.7s; }
