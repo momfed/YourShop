@@ -6,6 +6,7 @@ var Cart = require('../models/cart');
 var Offer = require('../models/offer');
 var Order = require('../models/order');
 var User = require('../models/user');
+var nodemailer = require('nodemailer');
 var csrf =  require('csurf');
 var stripe = require("stripe")("sk_test_CegyT3Xslz1fCPNYtZk5dzfX");
 
@@ -60,10 +61,6 @@ router.post('/checkout', function(req, res, next) {
 	  		return res.redirect('/checkout');
 	    }
 
-	    var api_key = 'key-b125f3f26d74496c7aae4dc06546a9ad';
-		var domain = 'sandbox0e3c912c08f5466999bbc3527abfcbdc.mailgun.org';
-		var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-
 		if (req.body.address === 'newAddress') {
 			var address = req.body.newAddress;
 			var id = req.user.id;
@@ -75,20 +72,35 @@ router.post('/checkout', function(req, res, next) {
 			});
 		} else { var address = req.body.address; }
 
-		var data = {
-		  from: req.body.email+'<postmaster@sandbox0e3c912c08f5466999bbc3527abfcbdc.mailgun.org>',
-		  to: 'arbihysko@gmail.com',
-		  subject: req.body.name,
-		  html: "<h1>New order</h1><br><br>"+JSON.stringify(cart.items)+"<br><br><h3>Zona --> "+req.body.zone+"</h3><br><h3>Adresa --> "+address+"</h3><br><h3>Nr-tel --> "+req.body.tel+"</h3>",
-		};
-		 
-		mailgun.messages().send(data, function (error, body) {
-		    if (error) throw error;
-		    if (!error) {
-		    	console.log(body);
-		    }
-		    
-		});
+		let transporter = nodemailer.createTransport({
+	        service: 'gmail',
+	        secure: false,
+	        port: 25,
+	         // true for 465, false for other ports
+	        auth: {
+	            user: "apolouser03@gmail.com", // generated ethereal user
+	            pass: "dontwantto03"  // generated ethereal password
+	        },
+	        tls: {
+	        	rejectUnauthorized: false
+	        }
+	    });		
+	    // setup email data with unicode symbols
+	    let HelperOptions = {
+	        from: '"arbi" <apolouser03@gmail.com>', // sender address
+	        to: 'arbihysko@gmail.com', // list of receivers
+	        subject: 'Order', // Subject line
+	        html: "<h1>New order from "+req.body.email+"</h1><br><br>" + cart.generateArray().title + "<br><br><h3>Zona --> "+req.body.zone+"</h3><br><h3>Adresa --> "+address+"</h3><br><h3>Nr-tel --> "+req.body.tel+"</h3>", // plain text body
+	    };		
+	    // send mail with defined transport object
+	    transporter.sendMail(HelperOptions, (error, info) => {
+	        if (error) {
+	            throw error;
+	        }
+	        console.log('Message sent: %s', info.messageId);
+	        console.logl(info);		
+	    });
+
 
 	    if(req.user) {
 	  	var order = new Order({
@@ -275,6 +287,7 @@ router.get('/cart', function(req, res, next) {
 	}
 	var cart = new Cart(req.session.cart);
 	res.render('shop/sh-cart', {title: 'Shporta', products: cart.generateArray(), totalPrice: cart.totalPrice});
+	console.log(JSON.stringify(cart.generateArray().item));
 });
 
 module.exports = router;
